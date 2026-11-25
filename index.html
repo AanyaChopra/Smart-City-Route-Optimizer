@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart City Route Optimization System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Smart City Route Optimization System</h1>
+        <p>Shortest Path & Performance Analysis: Dijkstra’s vs. Bellman-Ford Algorithm</p>
+    </header>
+
+    <main class="container">
+        <section class="controls">
+            <div class="card">
+                <h3>1. Route Selection</h3>
+                <label>Start Location:</label>
+                <select id="startNode"></select>
+
+                <label>Destination:</label>
+                <select id="endNode"></select>
+
+                <div class="btn-group">
+                    <button id="runDijkstra" class="btn primary">Run Dijkstra</button>
+                    <button id="runBellman" class="btn secondary">Run Bellman-Ford</button>
+                </div>
+                <button id="loadNegativeDemo" class="btn outline">Load Negative Weight Scenario (EV Rebate)</button>
+                <button id="resetCity" class="btn danger">Reset Default City Map</button>
+            </div>
+
+            <div class="card">
+                <h3>2. Add Custom Road</h3>
+                <div class="row">
+                    <select id="roadFrom"></select>
+                    <select id="roadTo"></select>
+                </div>
+                <input type="number" id="roadWeight" placeholder="Cost / Distance (e.g., 5 or -2)">
+                <button id="addRoadBtn" class="btn primary">Add Directed Road</button>
+            </div>
+
+            <div class="card result-box" id="resultBox">
+                <h3>Route Output</h3>
+                <p id="resultText">Select a start and destination location, then run an algorithm.</p>
+            </div>
+        </section>
+
+        <section class="visualization">
+            <div class="card">
+                <h3>Interactive City Graph (Vertices & Weighted Edges)</h3>
+                <canvas id="cityCanvas" width="680" height="420"></canvas>
+            </div>
+
+            <div class="card">
+                <h3>3. Algorithm Performance Benchmark (Graph Size Scaling)</h3>
+                <p class="subtitle">Compares execution time (ms) across synthetic city networks of increasing size.</p>
+                <button id="runBenchmark" class="btn primary">Run Graph Size Benchmark</button>
+                <table id="benchmarkTable">
+                    <thead>
+                        <tr>
+                            <th>Locations (V)</th>
+                            <th>Roads (E)</th>
+                            <th>Dijkstra (ms)</th>
+                            <th>Bellman-Ford (ms)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align:center;">Click "Run Graph Size Benchmark" to test</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/graph.js"></script>
+    <script src="js/algorithms.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
